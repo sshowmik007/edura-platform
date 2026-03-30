@@ -17,8 +17,8 @@
 //   Copy an existing module block, change the id, title,
 //   lessons, and quiz questions.
 // ============================================================
-
-
+ 
+ 
 // ------------------------------------------------------------
 // TRACKS — The two main learning paths
 // ------------------------------------------------------------
@@ -38,24 +38,24 @@ export const TRACKS = [
     icon: "A",
   },
 ];
-
-
+ 
+ 
 // ------------------------------------------------------------
 // MODULES — Each module belongs to a track
 // ------------------------------------------------------------
 export const MODULES = [
-
+ 
   // ========================================
   // FOUNDATIONS TRACK
   // ========================================
-
+ 
   {
     id: "money-basics",
     trackId: "foundations",
     order: 1,
     title: "How Money Works",
     description: "Income, expenses, and the equation behind every financial decision.",
-
+ 
     // LESSONS — 10 slides, each with title, content, and optional video
     lessons: [
       {
@@ -63,158 +63,156 @@ export const MODULES = [
         videoUrl: "",
         content: `The Edura Guide: The Mechanics of Money
 The fundamental premise of financial literacy is understanding that money functions strictly as a tool. Much like a hammer or a smartphone, its value depends entirely on how you use it. While some people spend their careers earning money without ever achieving true financial security, others use modest incomes to build sustainable wealth.
-
+ 
 The distinction lies in a clear understanding of financial mechanics.
-
+ 
 This module provides that foundational framework. The objective is to break down complex financial concepts into practical, actionable strategies for managing income, expenses, and savings. By mastering these principles, you will develop a level of financial competency that surpasses the average adult.
-
+ 
 To build a system that produces consistent results, you must master three core operational concepts: the generation of income, the allocation of funds, and the retention of wealth.
-
+ 
 The Reality of Earning
 Entering the workforce requires an immediate understanding of how income works. When negotiating a salary or an hourly wage, you calculate a baseline gross income. However, the initial figure discussed during hiring rarely matches your actual paycheck.
-
+ 
 This introduces the critical distinction between gross pay and net pay. Gross pay represents your total negotiated earnings. Net pay is the actual money deposited into your account after mandatory tax withholdings and deductions are applied. A foundational step in personal finance is operating strictly on net income. Developing financial projections or spending strategies based on gross pay inevitably leads to cash flow deficits. Absolute clarity regarding your actual take-home pay is required to build any functional financial system.
-
+ 
 Directing the Flow of Capital
 The concept of a budget often carries a negative reputation, frequently viewed as a restrictive financial diet. A more accurate and effective framework is a structured spending plan.
-
+ 
 Operating without a proactive strategy allows daily impulses to dictate financial outcomes, often resulting in empty accounts and unnecessary stress before the next pay cycle. A spending plan is simply a mechanism for directing your money before the month begins. Effective financial management requires prioritizing absolute necessities, such as housing, food, and transportation. Once these baselines are secured, discretionary income can be systematically allocated toward personal interests. This structured approach ensures that your money is spent purposefully rather than reactively.
-
+ 
 Retention and Future Security
 Spending the entirety of your income creates a highly vulnerable financial position. A single unexpected event, such as a car repair or a temporary reduction in work hours, can immediately force you into debt.
-
+ 
 Saving money is fundamentally the practice of purchasing future stability. The immediate objective of saving is the establishment of an emergency reserve, a dedicated pool of cash designed specifically to absorb unexpected costs. Once this baseline security is established, saved capital transitions into a vehicle for opportunity. Whether the objective is acquiring an asset, funding a move, or generating independent cash flow, retained earnings represent autonomy. Every dollar held in reserve is a measure of future freedom.
-
+ 
 The Bottom Line
 Achieving financial independence does not require an immediate massive salary. It requires the implementation of a deliberate, structured system. It requires the recognition that every dollar has a specific function, and you act as the director assigning those functions.
-
+ 
 The following sections will deconstruct the mechanics of these systems in detail. The text will examine the components of a standard paycheck, introduce efficient methods for tracking cash flow, and outline actionable steps for establishing a financial safety net.`,
       },
-      {
-       [
       {
         title: "The Fundamental Equation of Personal Finance",
         videoUrl: "",
         content: `The entirety of personal finance can be distilled into a single, foundational equation:
-
+ 
 Income – Expenses = Retained Capital
-
+ 
 While this formula appears rudimentary, it governs the mechanics of every financial system, from a student's checking account to a multinational corporation. Understanding this equation requires breaking down its three distinct components.
-
+ 
 Income represents your cash inflow. In the early stages of a career, this is primarily "active income"—capital exchanged directly for your time, labor, and skills, such as an hourly wage or a salary. 
-
+ 
 Expenses represent your cash outflow. These are categorized into "fixed expenses" (consistent, predictable costs like rent or a car payment) and "variable expenses" (fluctuating costs like dining out or purchasing clothing). 
-
+ 
 The remaining balance—Retained Capital—is the ultimate metric of financial health. It dictates your trajectory. A net-zero balance means you are living paycheck-to-paycheck, entirely dependent on your next cycle of income to survive. A negative balance indicates the accumulation of debt. A positive balance, however, creates financial optionality. Retained capital is the exact resource required to fund investments, acquire assets, and build sustainable wealth. The primary objective of financial management is to systematically maximize this final number.`,
       },
       {
         title: "The Two Mechanisms of Financial Improvement",
         videoUrl: "",
         content: `When attempting to widen the gap between income and expenses, individuals can only manipulate two primary mechanisms. 
-
+ 
 Mechanism 1: Increase income potential. This is achieved by enhancing your "human capital"—the specific skills, education, and experience you possess. By learning a higher-paying skill, negotiating a wage increase, or establishing a secondary revenue stream, you actively increase your cash inflow. 
-
+ 
 Mechanism 2: Decrease operational expenditures. This requires strategic cost optimization, such as eliminating unused subscriptions, identifying cost-effective alternatives for daily necessities, and actively monitoring cash outflows.
-
+ 
 The general public tends to focus exclusively on Mechanism 2, relying on extreme budgeting to achieve financial goals. However, reducing expenses has a mathematical floor; you cannot reduce your survival costs (housing, basic nutrition, transportation) below zero. Conversely, the potential for increasing income has no theoretical ceiling. 
-
+ 
 The most effective strategy for wealth accumulation is the simultaneous application of both mechanisms. You must actively seek to maximize your earning potential while defending against "lifestyle creep"—the common phenomenon where a person's expenses organically rise to match their new, higher income.`,
       },
       {
         title: "Distinguishing Between Necessities and Discretionary Expenses",
         videoUrl: "",
         content: `A core principle of cash flow management is prioritizing needs over wants. While conceptually simple, practical application requires an understanding of utility and opportunity cost.
-
+ 
 Necessities are items required to maintain basic functional operations: secure housing, baseline nutrition, reliable transportation to employment or school, and fundamental healthcare. Discretionary expenses (wants) are items that enhance your standard of living but are not critical for survival: premium entertainment, dining at commercial restaurants, or luxury apparel.
-
+ 
 The complication arises when necessities and discretionary expenses overlap. For instance, a mobile device is a modern necessity for communication and employment. However, purchasing a $1,200 premium flagship smartphone instead of a functional $200 model transforms a necessity into a discretionary expense. The core utility (communication) is fulfilled by the cheaper device; the additional $1,000 is spent entirely on status and luxury.
-
+ 
 Understanding this distinction introduces the concept of "Opportunity Cost"—the potential benefit lost when you choose one alternative over another. The opportunity cost of buying the $1,200 phone is the $1,000 that could have been invested and compounded over time. Financial literacy is not about eliminating all discretionary spending; it is about recognizing opportunity costs and making calculated, intentional capital allocations.`,
       },
       {
         title: "The 50/30/20 Allocation Framework",
         videoUrl: "",
         content: `Generating income necessitates a structured system for capital allocation. Operating without a system guarantees inefficiency. The 50/30/20 framework offers a highly effective, scalable baseline for managing cash flow.
-
+ 
 50% is allocated to Necessities. This covers rent, groceries, utilities, and essential insurance. These are non-negotiable operational costs. If your baseline survival costs consume more than 50% of your income, you are in a vulnerable position and must immediately look to increase your income or drastically alter your living situation.
-
+ 
 30% is allocated to Discretionary Spending. This funds entertainment, dining, and personal hobbies. Financial frameworks that demand 100% austerity generally fail because they are psychologically unsustainable. Structuring a specific allowance for enjoyment ensures you adhere to the broader plan without experiencing burnout.
-
+ 
 20% is directed toward Wealth Accumulation. This capital is transferred to savings accounts, investment portfolios, and accelerated debt reduction. This 20% is the engine of your future financial independence. 
-
+ 
 While this exact ratio is not universally applicable to every economic environment—individuals in high-cost regions may temporarily require 60% for necessities—it serves as a powerful foundational parameter. It forces you to compartmentalize capital intentionally rather than spending indiscriminately until resources are exhausted.`,
       },
       {
         title: "Analyzing Latent Expenditures",
         videoUrl: "",
-        content: `A significant vulnerability in modern personal finance is the accumulation of latent, or "invisible," expenditures. In today’s digital economy, companies actively design payment systems to be frictionless, separating the psychological pain of payment from the acquisition of the good or service.
-
+        content: `A significant vulnerability in modern personal finance is the accumulation of latent, or "invisible," expenditures. In today's digital economy, companies actively design payment systems to be frictionless, separating the psychological pain of payment from the acquisition of the good or service.
+ 
 Because of automated billing and digital wallets, the average consumer significantly underestimates their recurring subscription costs. For a student, this often manifests as a series of micro-transactions:
 - Premium music streaming: $132/year
 - Video streaming services: $180/year
 - Cloud data storage: $36/year
 - Gaming services or recurring in-app purchases: $300+/year
 - Periodic food delivery (which includes hidden service fees and inflated menu prices): $480/year
-
+ 
 Cumulatively, these seemingly insignificant monthly charges can easily exceed $1,000 annually. Because these transactions are individually inexpensive and automatically drafted from an account, they escape immediate notice. 
-
+ 
 Optimizing your finances requires executing a periodic financial audit. By actively reviewing bank statements and tracking capital outflows, you can identify and eliminate structural inefficiencies. As an immediate exercise, audit your mobile device's active subscriptions today and cancel any service you have not utilized in the past thirty days.`,
       },
       {
         title: "The Principle of Prioritized Saving",
         videoUrl: "",
         content: `The standard, yet fundamentally flawed, approach to personal finance is spending income first and attempting to save the remainder. This approach generally fails due to Parkinson's Law, an economic adage stating that demand will expand to match the available supply. In personal finance, this means your discretionary spending will naturally expand to consume all available capital in your checking account, leaving a remainder of zero.
-
+ 
 The structural correction is a principle known as "Paying Yourself First." This requires reallocating capital into savings or investment vehicles immediately upon receiving income, prior to any consumer expenditure. 
-
+ 
 This strategy leverages behavioral economics. Capital that remains visible and easily accessible in a primary checking account is highly likely to be spent. By automatically transferring funds to a separate, less accessible reserve the moment a paycheck clears, you organically adjust your daily spending habits to operate within the newly reduced available balance. 
-
+ 
 Establishing an automated transfer—even a modest percentage per pay cycle—removes willpower from the equation. It is arguably the most critical operational habit required to build long-term financial security.`,
       },
       {
         title: "The Mechanics of Compound Interest",
         videoUrl: "",
         content: `Understanding the "Time Value of Money" is essential for wealth generation, and compound interest is the mathematical engine that drives it. 
-
+ 
 Simple interest yields returns strictly on the principal (the initial amount invested). Compound interest, however, yields returns on both the principal and the accumulated interest from previous periods. This creates exponential, rather than linear, financial growth.
-
+ 
 Consider an initial investment of $1,000 achieving an 8% annual return:
 - After Year 1: $1,080 (an $80 return)
 - After Year 5: $1,469 (the return accelerates as the baseline grows)
 - After Year 10: $2,159 (the principal has more than doubled)
 - After Year 30: $10,063 (the initial $1,000 has increased tenfold)
 - After Year 40: $21,724 (the curve of exponential growth becomes extreme)
-
+ 
 This growth occurs entirely passively, driven solely by the function of time and consistency. This illustrates the mathematical advantage of early market participation. An individual who begins investing a small amount at age sixteen will possess a substantially larger portfolio at retirement than someone who begins at age thirty-five with a much larger initial contribution, simply due to the extended duration of the compounding cycle.`,
       },
       {
         title: "Distinguishing Constructive and Destructive Debt",
         videoUrl: "",
         content: `Debt is not universally detrimental; it is a financial instrument that represents leverage. Depending on how that leverage is applied, it can either accelerate wealth generation or systematically destroy it.
-
+ 
 Constructive debt (often referred to as "good debt") involves leveraging borrowed capital to acquire assets that appreciate in value or enhance your future earning capacity. Examples include educational loans that directly lead to high-yielding career paths, mortgages utilized for real estate acquisition, or commercial loans used to generate business revenue. In these instances, the value generated by the asset exceeds the cost of borrowing the capital.
-
+ 
 Destructive debt ("bad debt") involves borrowing capital to finance depreciating assets or daily consumer habits. The most dangerous form is revolving credit card debt, which often carries an Annual Percentage Rate (APR) exceeding 20%. Financing luxury apparel, vacations, or vehicles beyond your operational budget creates a negative compounding effect, where interest rapidly multiplies the amount owed, paralyzing your cash flow.
-
+ 
 The critical evaluative metric for any debt is this: Will the borrowed capital generate a financial return that significantly exceeds the cost of the interest? If the mathematics are favorable, the leverage may be justified. If it is merely funding a lifestyle upgrade, the debt must be avoided.`,
       },
       {
         title: "The Asymmetric Advantage of Time",
         videoUrl: "",
         content: `The most significant asset available to a young adult is not initial capital, nor is it immediate earning power; it is an extended time horizon. 
-
+ 
 Building financial security does not require substantial preliminary funding, an advanced degree in economics, or complex market analysis. It requires initiation and consistency. Financial literacy is, in itself, a compounding asset. The concepts you learn and implement today will govern how you manage hundreds of thousands of dollars over the course of your lifetime.
-
+ 
 You can establish a robust financial foundation by executing fundamental actions immediately. The transition from theoretical knowledge to applied practice begins with these steps:
 1. Conduct a full audit of your current cash flow and latent expenditures.
 2. Establish a secure capital reserve (an emergency fund).
 3. Automate a "Pay Yourself First" savings protocol, regardless of the initial amount.
 4. Continue expanding your financial vocabulary.
-
+ 
 The primary distinction between individuals who achieve financial independence and those who experience chronic financial instability is rarely their initial income level. It is the quality of their financial habits and their foundational knowledge. By internalizing these mechanics now, you are establishing a systemic advantage that will yield returns for decades.`,
       },
     ],
-
+ 
     // QUIZ — 8 questions with 4 options each
     quiz: [
       {
@@ -226,7 +224,7 @@ The primary distinction between individuals who achieve financial independence a
       {
         q: "When attempting to widen the gap between income and expenses, why is increasing your 'human capital' highly effective?",
         opts: ["It allows you to utilize more destructive debt.", "Reducing expenses has a mathematical floor (survival costs), while income potential has no theoretical ceiling.", "It eliminates the need to pay mandatory taxes.", "It automatically liquidates your depreciating assets."],
-        correct: 2,
+        correct: 1,
         why: "While extreme budgeting has a limit—you must pay for basic housing and food—investing in your education and skills (human capital) allows you to continuously scale your earning potential.",
       },
       {
@@ -265,13 +263,14 @@ The primary distinction between individuals who achieve financial independence a
         correct: 2,
         why: "An extended time horizon allows even modest, consistent capital investments to compound exponentially over decades, establishing a massive systemic advantage over those who begin investing later in life.",
       },
-    ]
-
-
+    ],
+  },
+ 
+ 
   // ========================================
   // MORE FOUNDATIONS MODULES (add content later)
   // ========================================
-
+ 
   {
     id: "banking",
     trackId: "foundations",
@@ -299,12 +298,12 @@ The primary distinction between individuals who achieve financial independence a
     lessons: [],
     quiz: [],
   },
-
-
+ 
+ 
   // ========================================
   // ADVANCED TRACK (add content later)
   // ========================================
-
+ 
   {
     id: "paycheck",
     trackId: "advanced",
@@ -342,3 +341,4 @@ The primary distinction between individuals who achieve financial independence a
     quiz: [],
   },
 ];
+ 
