@@ -1,4 +1,4 @@
-import { University } from "lucide-react";
+import squareLogo from "@/assets/SquareLogo.webp";
 
 export default function AuthHeroPanel() {
   return (
@@ -11,11 +11,15 @@ export default function AuthHeroPanel() {
         }}
       />
 
-      <div className="relative z-10 max-w-md text-center lg:mt-[10%]">
+      <div className="relative z-10 max-w-md text-center lg:mt-[16%]">
         <div className="mb-12 flex justify-center">
           <div className="relative flex h-64 w-64 items-center justify-center rounded-full bg-primary-container/10">
             <div className="flex h-[170px] w-[170px] items-center justify-center rounded-full bg-primary/10 text-primary">
-              <University className="h-20 w-20" strokeWidth={1.8} />
+              <img
+                src={squareLogo}
+                alt="Edura Financial square logo"
+                className="h-24 w-24 object-contain"
+              />
             </div>
             <div className="absolute -right-4 -top-4 flex h-12 w-12 items-center justify-center rounded-xl bg-tertiary-fixed shadow-lg">
               <span className="material-symbols-outlined fill-icon text-surface">

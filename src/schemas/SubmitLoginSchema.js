@@ -1,11 +1,18 @@
 import { z } from "zod";
 
+import { sanitizePlainText } from "@/lib/sanitize";
+
+const sanitizedString = (schema) =>
+  z.preprocess((value) => sanitizePlainText(value), schema);
+
 export const SubmitLoginSchema = z
   .object({
-    email: z
-      .string()
+    email: sanitizedString(
+      z
+        .string()
       .min(1, { message: "Email address is required." })
-      .email({ message: "Enter a valid email address." }),
+        .email({ message: "Enter a valid email address." }),
+    ),
     password: z
       .string()
       .min(1, { message: "Password is required." })
