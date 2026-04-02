@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { Auth, Dashboard, Lesson, Quiz } from "../components/shared/learning";
+import { Auth } from "../components/shared/learning/Auth";
+import { Dashboard } from "../components/shared/learning/Dashboard";
+import { Lesson } from "../components/shared/learning/Lesson";
+import { Quiz } from "../components/shared/learning/Quiz";
 import { doSave, loadProgress, loadUser } from "../shared/learning/storage";
 
 export default function LearningPage() {
