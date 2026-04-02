@@ -1,10 +1,14 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Suspense, lazy } from "react";
+import { AnimatePresence, motion } from "motion/react";
 
-import LoginForm from "@/components/auth/LoginForm";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 import AuthHeroPanel from "@/components/auth/AuthHeroPanel";
-import AuthPageHeader from "@/components/auth/AuthPageHeader";
 import AuthModeIntro from "@/components/auth/AuthModeIntro";
-import SignUpForm from "@/components/auth/SignUpForm";
+import AuthPageHeader from "@/components/auth/AuthPageHeader";
+
+const LoginForm = lazy(() => import("@/components/auth/LoginForm"));
+const SignUpForm = lazy(() => import("@/components/auth/SignUpForm"));
 
 export default function AuthPage({
   mode,
@@ -42,16 +46,49 @@ export default function AuthPage({
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="login" className="mt-0">
-              <LoginForm defaultValues={loginValues} onSubmit={onLoginSubmit} />
-            </TabsContent>
-
-            <TabsContent value="signup" className="mt-0">
-              <SignUpForm
-                defaultValues={signupDefaultValues}
-                onSubmit={onSignupSubmit}
-              />
-            </TabsContent>
+            <Suspense
+              fallback={
+                <div className="bg-surface-container-lowest ring-outline-variant/15 animate-pulse rounded-[1rem] p-8 ring-1">
+                  <div className="bg-outline-variant/40 mb-4 h-4 w-2/3 rounded-full" />
+                  <div className="bg-outline-variant/30 mb-10 h-3 w-1/2 rounded-full" />
+                  <div className="space-y-4">
+                    <div className="bg-outline-variant/30 h-12 w-full rounded-xl" />
+                    <div className="bg-outline-variant/30 h-12 w-full rounded-xl" />
+                    <div className="bg-outline-variant/30 h-12 w-full rounded-xl" />
+                  </div>
+                </div>
+              }
+            >
+              <AnimatePresence mode="wait">
+                {mode === "login" ? (
+                  <motion.div
+                    key="login"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12 }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
+                  >
+                    <LoginForm
+                      defaultValues={loginValues}
+                      onSubmit={onLoginSubmit}
+                    />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="signup"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12 }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
+                  >
+                    <SignUpForm
+                      defaultValues={signupDefaultValues}
+                      onSubmit={onSignupSubmit}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </Suspense>
           </Tabs>
 
           <footer className="font-ui-mono absolute bottom-8 text-xs text-slate-400">

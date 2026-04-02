@@ -15,7 +15,7 @@ function RoleOption({ active, icon, title, description, onClick }) {
       type="button"
       onClick={onClick}
       className={cn(
-        "group flex w-full items-center gap-4 rounded-xl border-2 p-4 text-left transition-all sm:flex-col sm:items-start",
+        "group flex w-full items-center gap-4 cursor-pointer rounded-xl border-2 p-4 text-left transition-all sm:flex-col sm:items-start",
         active
           ? "border-primary-container bg-surface-container-lowest shadow-[0_10px_24px_rgba(42,157,143,0.08)]"
           : "border-outline-variant/60 bg-surface-container-lowest hover:border-primary-container/50 sm:bg-surface-container-low sm:hover:bg-surface-container-lowest",

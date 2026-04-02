@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoaderCircle } from "lucide-react";
+import { motion } from "motion/react";
 import { useForm } from "react-hook-form";
 
 import AuthProviders from "@/components/auth/AuthProviders";
@@ -21,7 +22,12 @@ export default function LoginForm({ defaultValues, onSubmit }) {
   const isBusy = form.formState.isSubmitting || form.formState.isValidating;
 
   return (
-    <div className="w-full max-w-lg">
+    <motion.div
+      className="w-full max-w-lg"
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+    >
       <Form {...form}>
         <form className="space-y-8" onSubmit={form.handleSubmit(onSubmit)}>
           <LoginFields form={form} />
@@ -50,6 +56,6 @@ export default function LoginForm({ defaultValues, onSubmit }) {
           </p>
         </form>
       </Form>
-    </div>
+    </motion.div>
   );
 }
