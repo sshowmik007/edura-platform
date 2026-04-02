@@ -12,31 +12,38 @@ export function Auth({ onLogin }) {
 	const [password, setPassword] = useState("");
 	const [remember, setRemember] = useState(false);
 
-	const submit = (event) => {
-		event?.preventDefault();
-		if (!email.trim()) return;
+	const submit = (eventOrValues) => {
+		if (eventOrValues?.preventDefault) {
+			eventOrValues.preventDefault();
+		}
+		const values =
+			eventOrValues && !eventOrValues.preventDefault
+				? eventOrValues
+				: { name, email, school, role };
+		if (!values.email?.trim()) return;
 		const u = {
-			name: isSignup ? name.trim() || "Student" : email.split("@")[0],
-			email: email.trim(),
-			school: school.trim(),
-			role,
+			name: isSignup
+				? values.name?.trim() || "Student"
+				: values.email.trim().split("@")[0],
+			email: values.email.trim(),
+			school: values.school?.trim() || "",
+			role: values.role || role,
 		};
 		saveUser(u);
 		onLogin(u);
 	};
 
 	if (isSignup) {
-		return (
-			<SignUpPage
-				name={name}
-				email={email}
-				school={school}
-				role={role}
-				onNameChange={setName}
-				onEmailChange={setEmail}
-				onSchoolChange={setSchool}
-				onRoleChange={setRole}
-				onSubmit={submit}
+			return (
+				<SignUpPage
+					defaultValues={{ name, email, school, role }}
+					onSubmit={(values) => {
+						setName(values.name);
+						setEmail(values.email);
+					setSchool(values.school);
+					setRole(values.role);
+					submit(values);
+				}}
 				onSwitchMode={() => setIsSignup(false)}
 			/>
 		);

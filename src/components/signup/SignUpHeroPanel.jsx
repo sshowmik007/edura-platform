@@ -15,7 +15,7 @@ export default function SignUpHeroPanel() {
         <div className="mb-12 flex justify-center">
           <div className="relative flex h-64 w-64 items-center justify-center rounded-full bg-primary-container/10">
             <div className="flex h-[170px] w-[170px] items-center justify-center rounded-full bg-primary/10 text-primary">
-              <University className="h-16 w-16" strokeWidth={1.8} />
+              <University className="h-20 w-20" strokeWidth={1.8} />
             </div>
             <div className="absolute -right-4 -top-4 flex h-12 w-12 items-center justify-center rounded-xl bg-tertiary-fixed shadow-lg">
               <span className="material-symbols-outlined fill-icon text-surface">
@@ -38,7 +38,7 @@ export default function SignUpHeroPanel() {
       </div>
 
       <div className="absolute bottom-12 left-12 flex items-center gap-4 rounded-xl bg-surface-container-lowest p-4 shadow-sm">
-        <div className="font-ui-mono flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm text-on-primary">
+        <div className="font-ui-mono text-surface flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm text-on-primary">
           98%
         </div>
         <div className="text-xs">
@@ -46,6 +46,8 @@ export default function SignUpHeroPanel() {
           <p className="text-on-surface-variant">Active Learning Rate</p>
         </div>
       </div>
+      <div className="pointer-events-none absolute -right-[70px] -top-20 h-[280px] w-[280px] rounded-full bg-[rgba(0,104,93,0.08)] blur-lg" />
+      <div className="pointer-events-none absolute -bottom-[70px] -left-[50px] h-[220px] w-[220px] rounded-full bg-[rgba(79,94,129,0.08)]" />
     </section>
   );
 }
