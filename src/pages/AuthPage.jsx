@@ -19,7 +19,7 @@ export default function AuthPage({
       <AuthPageHeader />
       <main className="min-h-screen lg:grid lg:grid-cols-2">
         <AuthHeroPanel />
-        <section className="bg-surface relative flex min-h-screen items-center justify-center px-5 pb-20 pt-36 sm:px-8 sm:pt-40 lg:px-12 lg:pt-24">
+        <section className="bg-surface relative flex min-h-screen items-center justify-center px-5 pb-20 pt-20 sm:px-8 sm:pt-40 lg:px-12 lg:pt-24">
           <Tabs
             value={mode}
             onValueChange={onModeChange}
@@ -30,13 +30,13 @@ export default function AuthPage({
             <TabsList className="bg-surface-container-high mb-10 grid h-14 w-full grid-cols-2 rounded-[1rem] p-1.5">
               <TabsTrigger
                 value="login"
-                className="font-label h-full w-full cursor-pointer rounded-[0.75rem] border-0 bg-transparent px-6 text-[15px] font-semibold text-[#6d7a77] shadow-none ring-0 transition-all hover:text-on-surface data-[state=active]:bg-white data-[state=active]:text-on-surface data-[state=active]:shadow-[0_2px_10px_rgba(26,28,27,0.10)]"
+                className="font-label h-full w-full cursor-pointer rounded-[0.75rem] border-0 bg-transparent px-6 text-[15px] font-semibold text-[#6d7a77] shadow-none ring-0 transition-all hover:text-on-surface data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:shadow-[0_2px_10px_rgba(26,28,27,0.10)]"
               >
                 Log In
               </TabsTrigger>
               <TabsTrigger
                 value="signup"
-                className="font-label h-full w-full cursor-pointer rounded-[0.75rem] border-0 bg-transparent px-6 text-[15px] font-semibold text-[#6d7a77] shadow-none ring-0 transition-all hover:text-on-surface data-[state=active]:bg-white data-[state=active]:text-on-surface data-[state=active]:shadow-[0_2px_10px_rgba(26,28,27,0.10)]"
+                className="font-label h-full w-full cursor-pointer rounded-[0.75rem] border-0 bg-transparent px-6 text-[15px] font-semibold text-[#6d7a77] shadow-none ring-0 transition-all hover:text-on-surface data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:shadow-[0_2px_10px_rgba(26,28,27,0.10)]"
               >
                 Sign Up
               </TabsTrigger>
