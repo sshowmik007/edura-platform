@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
+import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import AuthHeroPanel from "@/components/auth/AuthHeroPanel";
@@ -9,6 +10,20 @@ import AuthPageHeader from "@/components/auth/AuthPageHeader";
 
 const LoginForm = lazy(() => import("@/components/auth/LoginForm"));
 const SignUpForm = lazy(() => import("@/components/auth/SignUpForm"));
+
+function AuthFormSkeleton() {
+  return (
+    <div className="bg-surface-container-lowest ring-outline-variant/15 rounded-[1rem] p-8 ring-1">
+      <Skeleton className="mb-4 h-4 w-2/3 rounded-full" />
+      <Skeleton className="mb-10 h-3 w-1/2 rounded-full" />
+      <div className="space-y-4">
+        <Skeleton className="h-12 w-full rounded-xl" />
+        <Skeleton className="h-12 w-full rounded-xl" />
+        <Skeleton className="h-12 w-full rounded-xl" />
+      </div>
+    </div>
+  );
+}
 
 export default function AuthPage({
   mode,
@@ -47,17 +62,7 @@ export default function AuthPage({
             </TabsList>
 
             <Suspense
-              fallback={
-                <div className="bg-surface-container-lowest ring-outline-variant/15 animate-pulse rounded-[1rem] p-8 ring-1">
-                  <div className="bg-outline-variant/40 mb-4 h-4 w-2/3 rounded-full" />
-                  <div className="bg-outline-variant/30 mb-10 h-3 w-1/2 rounded-full" />
-                  <div className="space-y-4">
-                    <div className="bg-outline-variant/30 h-12 w-full rounded-xl" />
-                    <div className="bg-outline-variant/30 h-12 w-full rounded-xl" />
-                    <div className="bg-outline-variant/30 h-12 w-full rounded-xl" />
-                  </div>
-                </div>
-              }
+              fallback={<AuthFormSkeleton />}
             >
               <AnimatePresence mode="wait">
                 {mode === "login" ? (

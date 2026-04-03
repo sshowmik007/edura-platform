@@ -1,6 +1,8 @@
-import { MODULES, TRACKS } from "../../../content";
+import data from "../../../data.json";
 import { C, F } from "../../../shared/learning/theme";
 import { Btn } from "./Btn";
+
+const { MODULES, TRACKS } = data;
 
 export function Dashboard({ user, progress, onSelect, onLogout }) {
 	const done = Object.keys(progress).filter((k) => progress[k]?.completed);

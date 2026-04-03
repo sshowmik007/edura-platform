@@ -40,7 +40,7 @@ export default function DashboardSidebar({ navLinks, footerLinks }) {
           <img
             src={eduraFinancialLogo}
             alt="Edura Financial"
-            className=" md:w-full md:h-full h-16 rounded-md object-contain"
+            className=" md:w-full md:h-12 h-16 rounded-md object-contain"
           />
         </div>
         {/* <SidebarSeparator className="bg-outline-variant/60 mx-2" /> */}
