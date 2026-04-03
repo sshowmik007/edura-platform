@@ -1,5 +1,13 @@
 import React from "react";
-import { HelpCircle, LogOut, Settings, User } from "lucide-react";
+import {
+  Bell,
+  HelpCircle,
+  LayoutGrid,
+  LogOut,
+  Search,
+  Settings,
+  User,
+} from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -17,19 +25,18 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 export default function DashboardNavbar() {
   return (
     <header className="bg-surface/80 border-surface-container sticky top-0 z-40 flex w-full items-center justify-between border-b px-8 py-3 backdrop-blur-md lg:px-8">
-      <div className="flex items-center space-x-4">
-        <SidebarTrigger />
+      <div className="flex items-center space-x-3">
+        <SidebarTrigger className="md:hidden" />
+        <LayoutGrid className="text-on-surface-variant h-4 w-4" />
         <h3 className="text-secondary text-sm font-semibold uppercase tracking-wider">
           Dashboard
         </h3>
       </div>
       <div className="mx-8 max-w-md flex-1">
         <div className="relative group">
-          <span className="material-symbols-outlined text-on-surface-variant absolute left-3 top-1/2 -translate-y-1/2 text-xl">
-            search
-          </span>
+          <Search className="text-on-surface-variant absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" />
           <Input
-            className="bg-surface-container-low h-9 w-full rounded-full border-none py-2 pl-10 pr-4 text-sm placeholder:text-on-surface-variant/60 focus-visible:ring-1 focus-visible:ring-primary/30"
+            className="bg-surface-container-low h-10 w-full rounded-full border-none py-2 pl-10 pr-4 text-sm placeholder:text-on-surface-variant/60 focus-visible:ring-1 focus-visible:ring-primary/30"
             placeholder="Search modules, lessons..."
             type="text"
           />
@@ -37,14 +44,10 @@ export default function DashboardNavbar() {
       </div>
       <div className="flex items-center space-x-4">
         <Button variant="ghost" size="icon-sm">
-          <span className="material-symbols-outlined text-on-surface-variant">
-            notifications
-          </span>
+          <Bell className="text-on-surface-variant h-4 w-4" />
         </Button>
         <Button variant="ghost" size="icon-sm">
-          <span className="material-symbols-outlined text-on-surface-variant">
-            help
-          </span>
+          <HelpCircle className="text-on-surface-variant h-4 w-4" />
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -58,23 +61,32 @@ export default function DashboardNavbar() {
               </Avatar>
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" sideOffset={8}>
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuContent
+            align="end"
+            sideOffset={8}
+            className="w-44 rounded-xl p-1"
+          >
+            <DropdownMenuLabel className="px-2 py-1.5 text-sm font-semibold text-on-surface">
+              My Account
+            </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem className="px-2 py-2 focus:bg-surface-container-high focus:text-on-surface">
               <User className="mr-2 h-4 w-4" />
               Profile
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem className="px-2 py-2 focus:bg-surface-container-high focus:text-on-surface">
               <Settings className="mr-2 h-4 w-4" />
               Settings
             </DropdownMenuItem>
-            <DropdownMenuItem variant="destructive">
+            <DropdownMenuItem
+              variant="destructive"
+              className="px-2 py-2 focus:bg-destructive/10"
+            >
               <LogOut className="mr-2 h-4 w-4" />
               Logout
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem className="px-2 py-2 focus:bg-surface-container-high focus:text-on-surface">
               <HelpCircle className="mr-2 h-4 w-4" />
               Support
             </DropdownMenuItem>

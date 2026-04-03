@@ -1,4 +1,12 @@
 import React from "react";
+import {
+  BarChart3,
+  BookOpen,
+  HelpCircle,
+  LayoutGrid,
+  Settings,
+  Users,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -11,6 +19,15 @@ import {
   SidebarMenuItem,
   SidebarSeparator,
 } from "@/components/ui/sidebar";
+
+const iconMap = {
+  dashboard: LayoutGrid,
+  menu_book: BookOpen,
+  group: Users,
+  analytics: BarChart3,
+  settings: Settings,
+  help: HelpCircle,
+};
 
 export default function DashboardSidebar({ navLinks, footerLinks }) {
   return (
@@ -39,13 +56,18 @@ export default function DashboardSidebar({ navLinks, footerLinks }) {
               <SidebarMenuButton
                 asChild
                 isActive={item.active}
-                className="data-[active=true]:bg-surface-container-lowest data-[active=true]:text-primary data-[active=true]:font-semibold hover:bg-surface-container-high text-on-surface-variant h-10 rounded-md px-3 "
+                className="group data-[active=true]:bg-surface-container-lowest data-[active=true]:text-primary data-[active=true]:font-semibold hover:bg-surface-container-high text-on-surface h-10 rounded-xl px-3"
               >
                 <a href="#">
-                  <span className="material-symbols-outlined text-neutral-600 text-[20px]">
-                    {item.icon}
+                  {iconMap[item.icon]
+                    ? React.createElement(iconMap[item.icon], {
+                        className:
+                          "h-5 w-5 text-on-surface-variant group-data-[active=true]:text-primary",
+                      })
+                    : null}
+                  <span className="text-[15px] text-on-surface-variant group-data-[active=true]:text-primary">
+                    {item.label}
                   </span>
-                  <span className="text-[15px]">{item.label}</span>
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
@@ -54,7 +76,7 @@ export default function DashboardSidebar({ navLinks, footerLinks }) {
       </SidebarContent>
 
       <SidebarFooter className="bg-surface-container-low gap-3 px-3 pb-4">
-        <Button className="bg-primary text-white h-11 w-full rounded-md font-semibold shadow-lg hover:shadow-xl">
+        <Button className="bg-primary text-white h-11 w-full rounded-sm font-semibold shadow-lg hover:shadow-xl">
           New Report
         </Button>
         <div className="border-outline-variant/60 border-t pt-3">
@@ -66,9 +88,11 @@ export default function DashboardSidebar({ navLinks, footerLinks }) {
                   className="text-on-surface-variant hover:bg-surface-container-high h-9 rounded-lg px-3"
                 >
                   <a href="#">
-                    <span className="material-symbols-outlined text-[20px]">
-                      {item.icon}
-                    </span>
+                    {iconMap[item.icon]
+                      ? React.createElement(iconMap[item.icon], {
+                          className: "h-5 w-5 text-on-surface-variant",
+                        })
+                      : null}
                     <span>{item.label}</span>
                   </a>
                 </SidebarMenuButton>

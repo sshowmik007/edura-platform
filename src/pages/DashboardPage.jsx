@@ -1,4 +1,5 @@
 import React from "react";
+import { ArrowRight, Lock } from "lucide-react";
 
 import DashboardFooter from "@/components/dashboard/DashboardFooter";
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
@@ -156,13 +157,11 @@ const DashboardPage = () => {
                     <div className="bg-surface border-primary flex h-10 w-10 items-center justify-center rounded-full border-4">
                       <div className="bg-primary h-2.5 w-2.5 animate-pulse rounded-full" />
                     </div>
-                  ) : (
-                    <div className="bg-surface-container-low border-outline-variant/70 flex h-10 w-10 items-center justify-center rounded-full border-2">
-                      <span className="material-symbols-outlined text-on-surface-variant/60 text-base">
-                        lock
-                      </span>
-                    </div>
-                  )}
+                      ) : (
+                        <div className="bg-surface-container-low border-outline-variant/70 flex h-10 w-10 items-center justify-center rounded-full border-2">
+                          <Lock className="text-on-surface-variant/60 h-4 w-4" />
+                        </div>
+                      )}
                 </div>
                 <Card className="bg-surface-container-lowest ring-outline-variant/20 shadow-[0_10px_30px_rgba(26,28,27,0.06)] ring-1">
                   <CardContent className="flex items-center justify-between px-7 py-2">
@@ -196,12 +195,10 @@ const DashboardPage = () => {
                       </div>
                     </div>
                     {item.status === "active" ? (
-                      <Button className="bg-primary text-white flex items-center rounded-md px-8 py-5 text-sm font-semibold shadow-md transition-all hover:shadow-lg">
-                        {item.action}
-                        <span className="material-symbols-outlined text-sm ml-2">
-                          arrow_forward
-                        </span>
-                      </Button>
+                        <Button className="bg-primary text-white flex items-center rounded-md px-8 py-5 text-sm font-semibold shadow-md transition-all hover:shadow-lg">
+                          {item.action}
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
                     ) : (
                       <Badge
                         variant="secondary"
@@ -230,13 +227,11 @@ const DashboardPage = () => {
           <div className="space-y-6">
             {advanced.map((item) => (
               <div key={item.title} className="relative group">
-                <div className="absolute -left-12 top-1/2 z-10 -translate-y-1/2">
-                  <div className="bg-surface-container-low border-outline-variant/70 flex h-10 w-10 items-center justify-center rounded-full border-2">
-                    <span className="material-symbols-outlined text-on-surface-variant/60 text-base">
-                      lock
-                    </span>
-                  </div>
-                </div>
+                    <div className="absolute -left-12 top-1/2 z-10 -translate-y-1/2">
+                      <div className="bg-surface-container-low border-outline-variant/70 flex h-10 w-10 items-center justify-center rounded-full border-2">
+                        <Lock className="text-on-surface-variant/60 h-4 w-4" />
+                      </div>
+                    </div>
                 <Card className="bg-surface-container-lowest ring-outline-variant/20 shadow-[0_10px_30px_rgba(26,28,27,0.06)] ring-1">
                   <CardContent className="flex items-center justify-between px-7 py-2">
                     <div className="flex flex-1 items-center">
