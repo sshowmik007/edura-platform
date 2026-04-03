@@ -206,8 +206,8 @@ export default function DashboardPage() {
               </div>
               <h3 className="text-secondary text-xl font-bold">{track.name}</h3>
             </div>
-            <div className="relative pl-12">
-              <div className="border-outline-variant/70 absolute bottom-4 left-[19px] top-4 w-0.5 border-l-2 border-dashed" />
+            <div className="relative pl-10 sm:pl-12">
+              <div className="border-outline-variant/70 absolute bottom-4 left-[16px] top-4 w-0.5 border-l-2 border-dashed sm:left-[19px]" />
               <div className="space-y-6">
                 {mods.map((mod) => {
                   const has = mod.lessons.length > 0;
@@ -215,33 +215,35 @@ export default function DashboardPage() {
                   const isActive = mod.id === firstAvailableId;
                   return (
                     <div key={mod.id} className="relative group">
-                      <div className="absolute -left-12 top-1/2 z-10 -translate-y-1/2">
+                      <div className="absolute lg:-left-[46px]  -left-[35px] top-1/2 z-10 -translate-y-1/2 sm:-left-12">
                         {isActive ? (
-                          <div className="bg-surface border-primary flex h-10 w-10 items-center justify-center rounded-full border-4">
-                            <div className="bg-primary h-2.5 w-2.5 animate-pulse rounded-full" />
+                          <div className="bg-surface border-primary flex md:h-9 md:w-9 h-6 w-6 items-center justify-center rounded-full border-[3px]">
+                            <div className="bg-primary md:h-2  md:w-2 h-1.5 w-1.5 animate-pulse rounded-full" />
                           </div>
                         ) : (
-                          <div className="bg-surface-container-low border-outline-variant/70 flex h-10 w-10 items-center justify-center rounded-full border-2">
-                            <Lock className="text-on-surface-variant/60 h-4 w-4" />
+                          <div className="bg-surface-container-low border-outline-variant/70 flex md:h-9 md:w-9 h-6 w-6 items-center justify-center rounded-full border-2">
+                            <Lock className="text-on-surface-variant/60 md:h-3.5 md:w-3.5 h-2.5 w-2.5" />
                           </div>
                         )}
                       </div>
                       <Card
                         className={cn(
                           "bg-surface-container-lowest ring-outline-variant/20 shadow-[0_10px_30px_rgba(26,28,27,0.06)] ring-1",
-                          has ? "cursor-pointer" : "cursor-not-allowed"
+                          has ? "cursor-pointer" : "cursor-not-allowed",
                         )}
                         onClick={() => has && handleSelect(mod)}
                       >
-                        <CardContent className="flex items-center justify-between px-7 py-3">
+                        <CardContent className="flex flex-col items-start gap-4 md:px-5 md:py-4 md:flex-row md:items-center md:justify-between ">
                           <div className="flex flex-1 items-center">
-                            <div
-                              className={
-                                has
-                                  ? "bg-primary mr-6 h-2.5 w-2.5 rounded-full shadow-[0_0_0_5px_rgba(42,157,143,0.18)]"
-                                  : "bg-outline-variant/60 mr-6 h-2.5 w-2.5 rounded-full"
-                              }
-                            />
+                            <div className="lg:mr-6  h-5 w-5 items-center justify-center hidden lg:flex">
+                              <div
+                                className={
+                                  has
+                                    ? "bg-primary h-2.5 w-2.5 rounded-full animate-pulse shadow-[0_0_0_5px_rgba(42,157,143,0.18)] "
+                                    : "bg-outline-variant/60 h-2.5 w-2.5 rounded-full "
+                                }
+                              />
+                            </div>
                             <div>
                               <h4
                                 className={

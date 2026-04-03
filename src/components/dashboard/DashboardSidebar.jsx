@@ -4,6 +4,7 @@ import {
   BookOpen,
   HelpCircle,
   LayoutGrid,
+  Search,
   Settings,
   Users,
 } from "lucide-react";
@@ -15,6 +16,7 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
+  SidebarInput,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -38,13 +40,22 @@ export default function DashboardSidebar({ navLinks, footerLinks }) {
           <img
             src={eduraFinancialLogo}
             alt="Edura Financial"
-            className=" w-full rounded-md object-contain"
+            className=" md:w-full md:h-full h-16 rounded-md object-contain"
           />
         </div>
         {/* <SidebarSeparator className="bg-outline-variant/60 mx-2" /> */}
       </SidebarHeader>
 
       <SidebarContent className="bg-surface-container-low px-3 ">
+        <div className="mb-3 px-2 lg:hidden">
+          <div className="relative">
+            <Search className="text-on-surface-variant absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" />
+            <SidebarInput
+              placeholder="Search modules, lessons..."
+              className="bg-surface-container-lowest h-10 w-full rounded-sm border-none pl-10 pr-4 text-sm placeholder:text-on-surface-variant/60 focus-visible:ring-1 focus-visible:ring-primary/30"
+            />
+          </div>
+        </div>
         <SidebarMenu>
           {navLinks.map((item) => (
             <SidebarMenuItem key={item.label} className="py-0.5">

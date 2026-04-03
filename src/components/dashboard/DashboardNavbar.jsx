@@ -27,12 +27,14 @@ export default function DashboardNavbar({ onLogout }) {
     <header className="bg-surface/80 border-surface-container sticky top-0 z-40 flex w-full items-center justify-between border-b px-8 py-3 backdrop-blur-md lg:px-8">
       <div className="flex items-center space-x-3">
         <SidebarTrigger className="md:hidden" />
-        <LayoutGrid className="text-on-surface-variant h-4 w-4" />
-        <h3 className="text-secondary text-sm font-semibold uppercase tracking-wider">
-          Dashboard
-        </h3>
+        <div className="md:flex items-center space-x-2 hidden">
+          <LayoutGrid className="text-on-surface-variant h-4 w-4 " />
+          <h3 className="text-secondary text-sm font-semibold uppercase tracking-wider">
+            Dashboard
+          </h3>
+        </div>
       </div>
-      <div className="mx-8 max-w-md flex-1">
+      <div className="mx-8 hidden max-w-md flex-1 lg:block">
         <div className="relative group">
           <Search className="text-on-surface-variant absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" />
           <Input
