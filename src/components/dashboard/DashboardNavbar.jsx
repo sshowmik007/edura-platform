@@ -22,7 +22,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 
-export default function DashboardNavbar() {
+export default function DashboardNavbar({ onLogout }) {
   return (
     <header className="bg-surface/80 border-surface-container sticky top-0 z-40 flex w-full items-center justify-between border-b px-8 py-3 backdrop-blur-md lg:px-8">
       <div className="flex items-center space-x-3">
@@ -81,6 +81,7 @@ export default function DashboardNavbar() {
             <DropdownMenuItem
               variant="destructive"
               className="px-2 py-2 focus:bg-destructive/10"
+              onClick={onLogout}
             >
               <LogOut className="mr-2 h-4 w-4" />
               Logout
