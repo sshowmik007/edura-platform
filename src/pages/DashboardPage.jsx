@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { ArrowRight, Lock } from "lucide-react";
 
 import { MODULES, TRACKS } from "../content";
 import { Auth } from "../components/shared/learning/Auth";
@@ -7,12 +6,12 @@ import { Lesson } from "../components/shared/learning/Lesson";
 import { Quiz } from "../components/shared/learning/Quiz";
 import { doSave, loadProgress, loadUser } from "../shared/learning/storage";
 
+import DashboardBackgroundDecor from "@/components/dashboard/DashboardBackgroundDecor";
 import DashboardFooter from "@/components/dashboard/DashboardFooter";
+import DashboardHeaderSection from "@/components/dashboard/DashboardHeaderSection";
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import DashboardStatsSection from "@/components/dashboard/DashboardStatsSection";
+import DashboardTrackSection from "@/components/dashboard/DashboardTrackSection";
 
 const navLinks = [
   { label: "Dashboard", icon: "dashboard", active: true },
@@ -67,6 +66,13 @@ export default function DashboardPage() {
     );
     return next?.id ?? orderedModules[0]?.id ?? null;
   }, [orderedModules, progress]);
+  const modulesByTrack = useMemo(() => {
+    return orderedModules.reduce((acc, mod) => {
+      if (!acc[mod.trackId]) acc[mod.trackId] = [];
+      acc[mod.trackId].push(mod);
+      return acc;
+    }, {});
+  }, [orderedModules]);
 
   if (!user)
     return (
@@ -125,176 +131,30 @@ export default function DashboardPage() {
         localStorage.removeItem("edura-user");
       }}
     >
-      <header className="mb-10">
-        <div className="text-on-surface-variant mb-4 flex items-center space-x-2 text-sm">
-          <span>Workspace</span>
-          <span>/</span>
-          <span className="text-on-surface font-medium">{user.email}</span>
-        </div>
-        <h2 className="font-display text-secondary mb-3 text-5xl font-bold">
-          Student Dashboard
-        </h2>
-        <p className="text-on-surface-variant max-w-2xl text-lg leading-relaxed">
-          Welcome back. You have one module ready to start in your foundation
-          path.
-        </p>
-      </header>
-
-      <section className="mb-16 grid grid-cols-1 gap-6 md:grid-cols-3">
-        <Card className="bg-surface-container-low border-surface-container-high rounded-xl border">
-          <CardContent className="p-6">
-            <span className="text-on-surface-variant mb-4 block text-xs font-semibold uppercase tracking-widest">
-              Modules Completed
-            </span>
-            <div className="flex items-baseline space-x-1">
-              <span className="font-ui-mono text-secondary text-4xl font-bold">
-                {doneIds.length}
-              </span>
-              <span className="font-ui-mono text-on-surface-variant text-lg">
-                /{totalModules}
-              </span>
-            </div>
-          </CardContent>
-        </Card>
-        <Card className="bg-surface-container-low border-surface-container-high rounded-xl border">
-          <CardContent className="p-6">
-            <span className="text-on-surface-variant mb-4 block text-xs font-semibold uppercase tracking-widest">
-              Avg Quiz Score
-            </span>
-            <div className="flex items-baseline space-x-1">
-              <span className="font-ui-mono text-secondary text-4xl font-bold">
-                {avgScore}
-              </span>
-            </div>
-          </CardContent>
-        </Card>
-        <Card className="bg-surface-container-low border-surface-container-high rounded-xl border">
-          <CardContent className="p-6">
-            <div className="mb-4 flex items-end justify-between">
-              <span className="text-on-surface-variant text-xs font-semibold uppercase tracking-widest">
-                Total Progress
-              </span>
-              <span className="font-ui-mono text-primary text-lg font-bold">
-                {progressPct}%
-              </span>
-            </div>
-            <div className="bg-surface-container-high h-2.5 w-full overflow-hidden rounded-full">
-              <div
-                className="bg-primary h-full rounded-full transition-all duration-500"
-                style={{ width: `${progressPct}%` }}
-              />
-            </div>
-          </CardContent>
-        </Card>
-      </section>
+      <DashboardHeaderSection userEmail={user.email} />
+      <DashboardStatsSection
+        doneCount={doneIds.length}
+        totalModules={totalModules}
+        avgScore={avgScore}
+        progressPct={progressPct}
+      />
 
       {TRACKS.map((track) => {
-        const mods = MODULES.filter((m) => m.trackId === track.id).sort(
-          (a, b) => a.order - b.order,
-        );
+        const mods = modulesByTrack[track.id] ?? [];
         return (
-          <section key={track.id} className="mb-16">
-            <div className="mb-8 flex items-center space-x-4">
-              <div
-                className="flex h-10 w-10 items-center justify-center rounded-full text-lg font-bold"
-                style={{
-                  background: `${track.color}20`,
-                  color: track.color,
-                }}
-              >
-                {track.icon}
-              </div>
-              <h3 className="text-secondary text-xl font-bold">{track.name}</h3>
-            </div>
-            <div className="relative pl-10 sm:pl-12">
-              <div className="border-outline-variant/70 absolute bottom-4 left-[16px] top-4 w-0.5 border-l-2 border-dashed sm:left-[19px]" />
-              <div className="space-y-6">
-                {mods.map((mod) => {
-                  const has = mod.lessons.length > 0;
-                  const completed = progress[mod.id]?.completed;
-                  const isActive = mod.id === firstAvailableId;
-                  return (
-                    <div key={mod.id} className="relative group">
-                      <div className="absolute lg:-left-[46px]  -left-[35px] top-1/2 z-10 -translate-y-1/2 sm:-left-12">
-                        {isActive ? (
-                          <div className="bg-surface border-primary flex md:h-9 md:w-9 h-6 w-6 items-center justify-center rounded-full border-[3px]">
-                            <div className="bg-primary md:h-2  md:w-2 h-1.5 w-1.5 animate-pulse rounded-full" />
-                          </div>
-                        ) : (
-                          <div className="bg-surface-container-low border-outline-variant/70 flex md:h-9 md:w-9 h-6 w-6 items-center justify-center rounded-full border-2">
-                            <Lock className="text-on-surface-variant/60 md:h-3.5 md:w-3.5 h-2.5 w-2.5" />
-                          </div>
-                        )}
-                      </div>
-                      <Card
-                        className={cn(
-                          "bg-surface-container-lowest ring-outline-variant/20 shadow-[0_10px_30px_rgba(26,28,27,0.06)] ring-1",
-                          has ? "cursor-pointer" : "cursor-not-allowed",
-                        )}
-                        onClick={() => has && handleSelect(mod)}
-                      >
-                        <CardContent className="flex flex-col items-start gap-4 md:px-5 md:py-4 md:flex-row md:items-center md:justify-between ">
-                          <div className="flex flex-1 items-center">
-                            <div className="lg:mr-6  h-5 w-5 items-center justify-center hidden lg:flex">
-                              <div
-                                className={
-                                  has
-                                    ? "bg-primary h-2.5 w-2.5 rounded-full animate-pulse shadow-[0_0_0_5px_rgba(42,157,143,0.18)] "
-                                    : "bg-outline-variant/60 h-2.5 w-2.5 rounded-full "
-                                }
-                              />
-                            </div>
-                            <div>
-                              <h4
-                                className={
-                                  has
-                                    ? "font-body text-secondary text-lg font-semibold"
-                                    : "font-body text-on-surface-variant/70 text-lg font-semibold"
-                                }
-                              >
-                                {mod.title}
-                              </h4>
-                              <p
-                                className={
-                                  has
-                                    ? "text-on-surface-variant mt-0.5 text-sm"
-                                    : "text-on-surface-variant/60 mt-0.5 text-sm"
-                                }
-                              >
-                                {mod.description}
-                              </p>
-                            </div>
-                          </div>
-                          {has ? (
-                            <Button
-                              className="bg-primary text-white flex items-center rounded-sm px-7 py-5 text-sm font-semibold shadow-md transition-all hover:shadow-lg"
-                              onClick={() => handleSelect(mod)}
-                            >
-                              {completed ? "Review" : "Start"}
-                              <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                          ) : (
-                            <Badge
-                              variant="secondary"
-                              className="bg-surface-container-high text-on-surface-variant/70 rounded-sm px-4 py-3 text-[9px] font-bold uppercase tracking-[0.2em]"
-                            >
-                              Coming soon
-                            </Badge>
-                          )}
-                        </CardContent>
-                      </Card>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
+          <DashboardTrackSection
+            key={track.id}
+            track={track}
+            modules={mods}
+            progress={progress}
+            firstAvailableId={firstAvailableId}
+            onSelect={handleSelect}
+          />
         );
       })}
 
       <DashboardFooter />
-      <div className="pointer-events-none fixed right-0 top-0 -z-10 h-1/2 w-1/3 bg-gradient-to-bl from-primary/5 to-transparent opacity-50 blur-3xl" />
-      <div className="pointer-events-none fixed bottom-0 left-64 -z-10 h-64 w-64 rounded-full bg-tertiary/5 blur-3xl" />
+      <DashboardBackgroundDecor />
     </DashboardLayout>
   );
 }
